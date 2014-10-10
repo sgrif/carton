@@ -3,6 +3,7 @@ scalaVersion := "2.11.2"
 resolvers += "Android Repository" at (new File(System.getenv("ANDROID_HOME")) / "extras" / "android" / "m2repository").getCanonicalFile.toURI.toString
 
 libraryDependencies ++= Seq(
+  "com.chuusai" %% "shapeless" % "2.0.0",
   "com.google.android" % "android" % "4.1.1.4" % "provided",
   "org.robolectric" % "robolectric" % "2.3" % "test",
   "org.scalatest" %% "scalatest" % "2.2.1" % "test",
