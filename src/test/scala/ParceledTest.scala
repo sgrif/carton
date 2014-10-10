@@ -1,6 +1,6 @@
 package androidParceling.test
 
-import androidParceling.{Parceler, Parceled, ParcelableParcel}
+import androidParceling.{Parceler, Parceled}
 
 import org.junit.Test
 import org.robolectric.annotation.Config
@@ -17,22 +17,26 @@ class ParceledTest extends UnitSpec {
     val bundle = new Bundle
     val parcel = Parcel.obtain
 
-    bundle.putParcelable("foo", Parceled(Foo(1, "foo")))
+    bundle.putParcelable("foo", Foo(1, "foo").asInstanceOf[Parcelable])
     //force round trip
     bundle.writeToParcel(parcel, 0)
     parcel.setDataPosition(0)
     val newBundle = Bundle.CREATOR.createFromParcel(parcel)
 
-    val foo = Parceled.unapply[Foo](newBundle.getParcelable[ParcelableParcel]("foo")).get
+    val foo = newBundle.getParcelable[Foo]("foo")
 
     foo should equal (Foo(1, "foo"))
   }
 }
 
 object ParceledTest {
-  case class Foo(x: Int, y: String)
+  import Parceler.auto._
+
+  case class Foo(x: Int, y: String) extends Parceled[Foo] with Parcelable {
+    val parceler = implicitly[Parceler[Foo]]
+  }
 
   object Foo {
-    implicit val parceler: Parceler[Foo] = Parceler[Foo]
+    val CREATOR = Parceler.creator[Foo]
   }
 }
