@@ -27,6 +27,23 @@ class ParceledTest extends UnitSpec {
 
     foo should equal (Foo(1, "foo"))
   }
+
+  @Test
+  def parceledTypesCanBeComposed {
+    val bundle = new Bundle
+    val parcel = Parcel.obtain
+    val bar = Bar("asdf", Foo(2, "jkl;"))
+
+    bundle.putParcelable("bar", bar)
+    //force round trip
+    bundle.writeToParcel(parcel, 0)
+    parcel.setDataPosition(0)
+    val newBundle = Bundle.CREATOR.createFromParcel(parcel)
+
+    val newBar = newBundle.getParcelable[Bar]("bar")
+
+    newBar should equal (bar)
+  }
 }
 
 object ParceledTest {
@@ -38,5 +55,13 @@ object ParceledTest {
 
   object Foo {
     val CREATOR = Parceler.creator[Foo]
+  }
+
+  case class Bar(x: String, y: Foo) extends Parceled[Bar] with Parcelable {
+    val parceler = implicitly[Parceler[Bar]]
+  }
+
+  object Bar {
+    val CREATOR = Parceler.creator[Bar]
   }
 }
