@@ -37,10 +37,10 @@ object CompositionTest {
   case class Bar(foo: Foo, s: String, d: Double)
 
   object Foo {
-    implicit val parceler: Parceler[Foo] = Parceler[Foo]
+    implicit val parceler = Parceler[Foo]
   }
 
   object Bar {
-    implicit val parceler: Parceler[Bar] = Parceler[Bar]
+    implicit val parceler = Parceler[Bar]
   }
 }

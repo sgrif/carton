@@ -11,7 +11,7 @@ trait Derivation {
       def createFromParcel(p: Parcel) = parceler.read(p)
     }
 
-  implicit val parcelerInstance: ProductTypeClass[Parceler] = new ProductTypeClass[Parceler] {
+  object typeClass extends ProductTypeClass[Parceler] {
     def emptyProduct = new Parceler[HNil]{
       def write(parcel: Parcel, a: HNil) = ()
       def read(parcel: Parcel) = HNil

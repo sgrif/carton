@@ -47,10 +47,8 @@ class ParceledTest extends UnitSpec {
 }
 
 object ParceledTest {
-  import Parceler.auto._
-
   case class Foo(x: Int, y: String) extends Parceled[Foo] with Parcelable {
-    val parceler = implicitly[Parceler[Foo]]
+    val parceler: Parceler[Foo] = Parceler[Foo]
   }
 
   object Foo {
@@ -58,7 +56,7 @@ object ParceledTest {
   }
 
   case class Bar(x: String, y: Foo) extends Parceled[Bar] with Parcelable {
-    val parceler = implicitly[Parceler[Bar]]
+    val parceler: Parceler[Bar] = Parceler[Bar]
   }
 
   object Bar {
