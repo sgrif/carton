@@ -1,4 +1,4 @@
-scalaVersion := "2.11.2"
+scalaVersion := "2.11.6"
 
 resolvers += "Android Repository" at (new File(System.getenv("ANDROID_HOME")) / "extras" / "android" / "m2repository").getCanonicalFile.toURI.toString
 
