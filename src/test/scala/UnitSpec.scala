@@ -1,6 +1,6 @@
-package androidParceling.test
+package carton.test
 
-import androidParceling.Parceler
+import carton.Parceler
 
 import org.scalatest._, junit._, prop.PropertyChecks
 import org.junit.runner.RunWith

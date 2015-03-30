@@ -1,6 +1,6 @@
-package androidParceling.test
+package carton.test
 
-import androidParceling.Parceler
+import carton.Parceler
 
 import org.junit.Test
 import org.robolectric.annotation.Config
