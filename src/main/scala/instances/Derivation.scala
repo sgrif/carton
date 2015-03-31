@@ -5,12 +5,6 @@ import android.os.{Parcel, Parcelable}
 import shapeless._
 
 trait Derivation {
-  def creator[A <: AnyRef](implicit parceler: Parceler[A], m: Manifest[A]) =
-    new Parcelable.Creator[A] {
-      def newArray(size: Int) = m.newArray(size)
-      def createFromParcel(p: Parcel) = parceler.read(p)
-    }
-
   object typeClass extends ProductTypeClass[Parceler] {
     def emptyProduct = new Parceler[HNil]{
       def write(parcel: Parcel, a: HNil) = ()
