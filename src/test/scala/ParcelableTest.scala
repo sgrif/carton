@@ -5,12 +5,11 @@ import carton.parcelable
 import org.junit.Test
 import org.robolectric.annotation.Config
 
-import android.content.Intent
-import android.os.{Parcel, Parcelable, Bundle}
-
 @Config(manifest=Config.NONE)
 class ParcelableTest extends UnitSpec {
   import ParcelableTest._
+  import android.content.Intent
+  import android.os.{Parcel, Parcelable, Bundle}
 
   @Test
   def parcelableTypesWorkWithBundle {

@@ -8,6 +8,12 @@ javacOptions ++= Seq("-source", "1.7", "-target", "1.7")
 
 scalacOptions ++= Seq("-feature", "-deprecation", "-target:jvm-1.7")
 
+name := "Carton"
+
+organization := "carton"
+
+version := "0.1-SNAPSHOT"
+
 libraryDependencies ++= Seq(
   "com.chuusai" %% "shapeless" % "2.1.0",
   "org.scala-lang" % "scala-reflect" % "2.11.6",

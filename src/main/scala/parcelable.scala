@@ -39,7 +39,7 @@ object parcelable {
 
         val CREATOR = new android.os.Parcelable.Creator[$name] {
           def newArray(size: Int) = new Array[$name](size)
-          def createFromParcel(p: Parcel) = parceler.read(p)
+          def createFromParcel(p: android.os.Parcel) = parceler.read(p)
         }
       """
 
