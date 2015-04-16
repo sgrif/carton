@@ -38,4 +38,20 @@ trait PrimitiveInstances {
     def read(parcel: Parcel) = parcel.readValue(getClass.getClassLoader)
       .asInstanceOf[A]
   }
+
+  implicit def optionParceler[A: Parceler] = new Parceler[Option[A]] {
+    def read(p: Parcel) =
+      if (p.readInt == 1)
+        Some(Parceler.read[A](p))
+      else
+        None
+
+    def write(p: Parcel, v: Option[A]) = {
+      if (v.nonEmpty)
+        p.writeInt(1)
+      else
+        p.writeInt(0)
+      v.foreach(Parceler.write(p, _))
+    }
+  }
 }

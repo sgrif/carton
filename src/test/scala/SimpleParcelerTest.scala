@@ -18,6 +18,7 @@ class ParcelTest extends UnitSpec {
   @Test def testShorts = testRoundTrip[Short]
   @Test def testStrings = testRoundTrip[String]
   @Test def testTuples = testRoundTrip[(String, Int)]
+  @Test def testOption = testRoundTrip[Option[String]]
 
   @Test def testSeq = testRoundTrip[Seq[String]]
   @Test def testLists = testRoundTrip[List[String]]
