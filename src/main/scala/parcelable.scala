@@ -72,7 +72,7 @@ object parcelable {
     annottees.map(_.tree) match {
       case (classDecl: ClassDef) :: Nil => modifiedDeclaration(classDecl)
       case (classDecl: ClassDef) :: (compDecl: ModuleDef) :: Nil => modifiedDeclaration(classDecl, Some(compDecl))
-      case _ => c.abort(c.enclosingPosition, "Invalid annottee")
+      case _ => c.abort(c.enclosingPosition, "@parcelable can only annotate classes")
     }
   }
 }

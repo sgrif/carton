@@ -35,12 +35,4 @@ class CompositionTest extends UnitSpec {
 object CompositionTest {
   case class Foo(x: Int, y: Int)
   case class Bar(foo: Foo, s: String, d: Double)
-
-  object Foo {
-    implicit val parceler = Parceler[Foo]
-  }
-
-  object Bar {
-    implicit val parceler = Parceler[Bar]
-  }
 }

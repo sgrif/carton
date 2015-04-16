@@ -1,3 +1,9 @@
+seq(bintraySettings:_*)
+
+seq(bintrayPublishSettings:_*)
+
+licenses += ("MIT", url("http://opensource.org/licenses/MIT"))
+
 scalaVersion := "2.11.6"
 
 resolvers += "Android Repository" at (new File(System.getenv("ANDROID_HOME")) / "extras" / "android" / "m2repository").getCanonicalFile.toURI.toString
@@ -12,7 +18,7 @@ name := "Carton"
 
 organization := "carton"
 
-version := "0.1-SNAPSHOT"
+version := "0.1-M1"
 
 libraryDependencies ++= Seq(
   "com.chuusai" %% "shapeless" % "2.1.0",
