@@ -18,7 +18,7 @@ name := "Carton"
 
 organization := "carton"
 
-version := "0.1-M2"
+version := "0.1-M3"
 
 libraryDependencies ++= Seq(
   "com.chuusai" %% "shapeless" % "2.1.0",
