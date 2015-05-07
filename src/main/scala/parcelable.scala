@@ -35,7 +35,7 @@ object parcelable {
 
     def parcelableCompanionDef(compDeclOrName: Either[TypeName, ModuleDef]) = {
       def parcelerBody(name: TypeName) = q"""
-        implicit val parceler: carton.Parceler[$name] = carton.Parceler[$name]
+        implicit val parceler = carton.Parceler[$name]
 
         val CREATOR = new android.os.Parcelable.Creator[$name] {
           def newArray(size: Int) = new Array[$name](size)
